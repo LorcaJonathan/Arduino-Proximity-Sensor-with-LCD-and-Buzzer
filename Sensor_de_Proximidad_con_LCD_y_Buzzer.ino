@@ -1,4 +1,3 @@
-
 #include <LiquidCrystal.h>
 
 #define Trigger 13 //Trigger en el pin 13
@@ -37,20 +36,20 @@ void loop() {
   t = pulseIn(Echo, HIGH); //Encontramos el ancho del pulso 
   d= t/59; //Hacemos la relacion de la distancia en cm segun el tiempo
 
-  lcd.clear();
-  lcd.setCursor(0,0);
-  lcd.print("Distancia");
+  lcd.clear(); //Limpia la pantalla
+  lcd.setCursor(0,0); //Establece el cursor en la posición de la columna 0 y fila 0
+  lcd.print("Distancia"); //Escribe el texto Distancia
   
-  lcd.setCursor(0,1);
-  lcd.print(d);
-  lcd.print("cm");
-  delay(350);
+  lcd.setCursor(0,1); //Establece el cursor en la posición de la columna 0 y fila 1
+  lcd.print(d); // Escribe el valor de la distancia 
+  lcd.print("cm"); //Imprime el texto "cm" en la pantalla LCD
+  delay(350); //espera 350 milisegundos
 
   if (d < min_distancia) {
-    tone(buzzer_Pin, 2500);
+    tone(buzzer_Pin, 2500); //Pita el buzzer a una frecuencia de 2500Hz si la condicion se cumple
   }
   else {
-    noTone(buzzer_Pin);
+    noTone(buzzer_Pin); //El buzzer deja de pitar si la condicion no se cumple
   }
 
 }
